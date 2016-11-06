@@ -8,6 +8,7 @@ package CompresorGrafico;
 import ClasesCompresor.*;
 import javax.swing.*;
 import java.io.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * Esta es la clase Compresor donde se encuentra la interfaz grafica del proyecto y en la cual se mandan a llamar los metodos
  * de otras clases.
@@ -124,6 +125,10 @@ public class Compresor extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         jf.setVisible(true);
         jf.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        
+                    FileNameExtensionFilter filtro=new FileNameExtensionFilter("Archivos txt", "txt");
+                    jf.setFileFilter(filtro);
+                    
         int opcion = jf.showOpenDialog(jButton1);
                         if (opcion == jf.APPROVE_OPTION) {
                         String pathArchivo = jf.getSelectedFile().getPath();
@@ -162,6 +167,7 @@ public class Compresor extends javax.swing.JFrame {
                     //la.getCabecera().getDato().preOrden();
                     tabla = la.contarHojas("", tabla, la.getCabecera().getDato().getRaiz());
                     System.out.println(tabla.imprimir());
+                    
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "AÚN NO HAS SELECCIONADO NINGUN ARCHIVO", "Error",JOptionPane.ERROR_MESSAGE);
         }
